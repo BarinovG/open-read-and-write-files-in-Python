@@ -21,7 +21,7 @@ def print_cook_book(cook_book):
         for ingredient in cook_book[key]:
             print(f'\t{ingredient}')
 
-# print_cook_book('cook_book.txt')
+# print_cook_book(cook_book_dict('cook_book.txt'))
 
 def get_shop_list_by_dishes(cook_book, dishes, person_count):
     shop_dict = {}
@@ -32,8 +32,7 @@ def get_shop_list_by_dishes(cook_book, dishes, person_count):
                 if ingridients['ingredient_name'] not in shop_dict:
                     shop_dict[ingridients['ingredient_name']] = {'quantity' : int(ingridients['quantity']), 'measure' : ingridients['measure']}
                 elif ingridients['ingredient_name'] in shop_dict:
-                    ingridients['quantity'] += int(ingridients['quantity'])
-                    shop_dict[ingridients['ingredient_name']] = {'quantity' : int(ingridients['quantity']), 'measure' : ingridients['measure']}
+                    shop_dict[ingridients['ingredient_name']]['quantity'] += int(ingridients['quantity'])
     return shop_dict
 
 pprint(get_shop_list_by_dishes(cook_book_dict('cook_book.txt'), ['Омлет', 'Фахитос', 'asd'], 3))
